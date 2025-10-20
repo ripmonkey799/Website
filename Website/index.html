@@ -3,303 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Modern Landing Page</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
-
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: #0f0f1e;
-            color: #e0e0e0;
-            overflow-x: hidden;
-        }
-
-        /* Navigation */
-        nav {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 1.5rem 5%;
-            background: rgba(15, 15, 30, 0.95);
-            backdrop-filter: blur(10px);
-            z-index: 1000;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-            animation: slideDown 0.6s ease-out;
-        }
-
-        @keyframes slideDown {
-            from {
-                transform: translateY(-100%);
-                opacity: 0;
-            }
-            to {
-                transform: translateY(0);
-                opacity: 1;
-            }
-        }
-
-        .logo {
-            font-size: 1.5rem;
-            font-weight: 700;
-            background: linear-gradient(135deg, #00d4ff, #0099ff);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        nav ul {
-            display: flex;
-            list-style: none;
-            gap: 2.5rem;
-        }
-
-        nav a {
-            text-decoration: none;
-            color: #e0e0e0;
-            font-weight: 500;
-            transition: all 0.3s ease;
-            position: relative;
-        }
-
-        nav a::after {
-            content: '';
-            position: absolute;
-            bottom: -5px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: linear-gradient(90deg, #00d4ff, #0099ff);
-            transition: width 0.3s ease;
-        }
-
-        nav a:hover::after {
-            width: 100%;
-        }
-
-        /* Hero Section */
-        .hero {
-            margin-top: 80px;
-            min-height: 90vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            position: relative;
-            overflow: hidden;
-            padding: 2rem;
-        }
-
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            right: -20%;
-            width: 600px;
-            height: 600px;
-            background: radial-gradient(circle, rgba(0, 212, 255, 0.15) 0%, transparent 70%);
-            animation: float 6s ease-in-out infinite;
-            z-index: 0;
-        }
-
-        @keyframes float {
-            0%, 100% { transform: translateY(0px) rotate(0deg); }
-            50% { transform: translateY(20px) rotate(5deg); }
-        }
-
-        .hero-content {
-            position: relative;
-            z-index: 1;
-            max-width: 800px;
-            text-align: center;
-            animation: fadeInUp 0.8s ease-out 0.3s both;
-        }
-
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        h1 {
-            font-size: 4rem;
-            margin-bottom: 1.5rem;
-            line-height: 1.2;
-            background: linear-gradient(135deg, #ffffff, #00d4ff);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .hero p {
-            font-size: 1.3rem;
-            margin-bottom: 2rem;
-            color: #a0a0b0;
-            line-height: 1.6;
-        }
-
-        .cta-buttons {
-            display: flex;
-            gap: 1.5rem;
-            justify-content: center;
-            flex-wrap: wrap;
-        }
-
-        .btn {
-            padding: 1rem 2.5rem;
-            border: none;
-            border-radius: 50px;
-            font-size: 1rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            text-decoration: none;
-            display: inline-block;
-        }
-
-        .btn-primary {
-            background: linear-gradient(135deg, #00d4ff, #0099ff);
-            color: #0f0f1e;
-            box-shadow: 0 10px 30px rgba(0, 212, 255, 0.3);
-        }
-
-        .btn-primary:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 15px 40px rgba(0, 212, 255, 0.5);
-        }
-
-        .btn-secondary {
-            background: rgba(255, 255, 255, 0.1);
-            color: #ffffff;
-            border: 1px solid rgba(0, 212, 255, 0.5);
-        }
-
-        .btn-secondary:hover {
-            background: rgba(0, 212, 255, 0.1);
-            border-color: #00d4ff;
-            box-shadow: 0 10px 30px rgba(0, 212, 255, 0.2);
-        }
-
-        /* Features Section */
-        .features {
-            padding: 6rem 5%;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2rem;
-            max-width: 1400px;
-            margin: 0 auto;
-        }
-
-        .feature-card {
-            background: linear-gradient(135deg, rgba(0, 212, 255, 0.05), rgba(0, 153, 255, 0.05));
-            padding: 2.5rem;
-            border-radius: 15px;
-            border: 1px solid rgba(0, 212, 255, 0.2);
-            transition: all 0.3s ease;
-            backdrop-filter: blur(10px);
-        }
-
-        .feature-card:hover {
-            transform: translateY(-8px);
-            border-color: rgba(0, 212, 255, 0.6);
-            box-shadow: 0 20px 40px rgba(0, 212, 255, 0.15);
-        }
-
-        .feature-icon {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-        }
-
-        .feature-card h3 {
-            font-size: 1.3rem;
-            margin-bottom: 1rem;
-            color: #ffffff;
-        }
-
-        .feature-card p {
-            color: #a0a0b0;
-            line-height: 1.6;
-        }
-
-        /* Footer */
-        footer {
-            padding: 3rem 5%;
-            text-align: center;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            background: rgba(0, 0, 0, 0.3);
-        }
-
-        footer p {
-            color: #707080;
-            margin-bottom: 1rem;
-        }
-
-        .social-links {
-            display: flex;
-            justify-content: center;
-            gap: 1.5rem;
-            margin-top: 1.5rem;
-        }
-
-        .social-links a {
-            color: #00d4ff;
-            text-decoration: none;
-            transition: all 0.3s ease;
-        }
-
-        .social-links a:hover {
-            color: #0099ff;
-            transform: translateY(-3px);
-        }
-
-        /* Responsive */
-        @media (max-width: 768px) {
-            h1 {
-                font-size: 2.5rem;
-            }
-
-            nav ul {
-                gap: 1.5rem;
-                font-size: 0.9rem;
-            }
-
-            .hero {
-                margin-top: 70px;
-            }
-
-            .cta-buttons {
-                flex-direction: column;
-                align-items: center;
-            }
-
-            .btn {
-                width: 100%;
-                max-width: 300px;
-            }
-        }
-    </style>
+    <title>TemplateHub - Premium Website Templates</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
     <!-- Navigation -->
     <nav>
-        <div class="logo">Brand</div>
+        <div class="logo">TemplateHub</div>
         <ul>
+            <li><a href="#templates">Templates</a></li>
+            <li><a href="#categories">Categories</a></li>
             <li><a href="#features">Features</a></li>
-            <li><a href="#about">About</a></li>
             <li><a href="#contact">Contact</a></li>
         </ul>
     </nav>
@@ -307,42 +22,252 @@
     <!-- Hero Section -->
     <section class="hero">
         <div class="hero-content">
-            <h1>Welcome to the Future</h1>
-            <p>Experience cutting-edge design and seamless functionality. Build something amazing today.</p>
+            <h1>Premium Website Templates</h1>
+            <p>Launch your next project faster with our professionally designed, responsive website templates. Perfect for businesses, portfolios, and more.</p>
             <div class="cta-buttons">
-                <button class="btn btn-primary">Get Started</button>
-                <button class="btn btn-secondary">Learn More</button>
+                <button class="btn btn-primary">Browse Templates</button>
+                <button class="btn btn-secondary">View Pricing</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Categories Section -->
+    <section class="features" id="categories">
+        <h2 style="grid-column: 1 / -1; text-align: center; margin-bottom: 2rem; font-size: 2.5rem; background: linear-gradient(135deg, #ffffff, #00d4ff); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">Template Categories</h2>
+        
+        <div class="feature-card">
+            <div class="feature-icon"><i class="fas fa-briefcase"></i></div>
+            <h3>Business</h3>
+            <p>Professional templates for corporate websites, startups, and service-based businesses.</p>
+        </div>
+        <div class="feature-card">
+            <div class="feature-icon"><i class="fas fa-shopping-cart"></i></div>
+            <h3>E-commerce</h3>
+            <p>Online store templates with product showcases, shopping carts, and payment integration.</p>
+        </div>
+        <div class="feature-card">
+            <div class="feature-icon"><i class="fas fa-paint-brush"></i></div>
+            <h3>Portfolio</h3>
+            <p>Showcase your work with elegant portfolio templates for creatives and professionals.</p>
+        </div>
+        <div class="feature-card">
+            <div class="feature-icon"><i class="fas fa-blog"></i></div>
+            <h3>Blog</h3>
+            <p>Content-focused templates perfect for bloggers, writers, and news websites.</p>
+        </div>
+    </section>
+
+    <!-- Templates Showcase -->
+    <section class="features" id="templates" style="background: rgba(10, 10, 20, 0.7); padding: 6rem 5%;">
+        <h2 style="grid-column: 1 / -1; text-align: center; margin-bottom: 3rem; font-size: 2.5rem; background: linear-gradient(135deg, #ffffff, #00d4ff); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">Featured Templates</h2>
+        
+        <div class="template-card">
+            <div class="template-preview" style="background: linear-gradient(45deg, #1a1a2e, #16213e); height: 200px; border-radius: 10px; margin-bottom: 1.5rem; position: relative; overflow: hidden;">
+                <div style="position: absolute; top: 20px; left: 20px; width: 80%; height: 20px; background: rgba(255,255,255,0.1); border-radius: 5px;"></div>
+                <div style="position: absolute; top: 50px; left: 20px; width: 60%; height: 15px; background: rgba(255,255,255,0.1); border-radius: 5px;"></div>
+                <div style="position: absolute; top: 80px; left: 20px; width: 90%; height: 80px; background: rgba(255,255,255,0.05); border-radius: 5px;"></div>
+                <div style="position: absolute; bottom: 20px; right: 20px; padding: 8px 15px; background: #00d4ff; color: #0f0f1e; border-radius: 20px; font-size: 0.8rem; font-weight: bold;">$49</div>
+            </div>
+            <h3>Nexus Business</h3>
+            <p>Modern corporate template with clean design and professional layout.</p>
+            <div style="display: flex; justify-content: space-between; margin-top: 1rem;">
+                <span style="color: #00d4ff;"><i class="fas fa-tag"></i> Business</span>
+                <span style="color: #a0a0b0;"><i class="fas fa-download"></i> 124 sales</span>
+            </div>
+        </div>
+        
+        <div class="template-card">
+            <div class="template-preview" style="background: linear-gradient(45deg, #2c3e50, #34495e); height: 200px; border-radius: 10px; margin-bottom: 1.5rem; position: relative; overflow: hidden;">
+                <div style="position: absolute; top: 20px; left: 20px; width: 40%; height: 120px; background: rgba(255,255,255,0.05); border-radius: 5px;"></div>
+                <div style="position: absolute; top: 20px; right: 20px; width: 50%; height: 15px; background: rgba(255,255,255,0.1); border-radius: 5px;"></div>
+                <div style="position: absolute; top: 45px; right: 20px; width: 50%; height: 15px; background: rgba(255,255,255,0.1); border-radius: 5px;"></div>
+                <div style="position: absolute; bottom: 20px; right: 20px; padding: 8px 15px; background: #00d4ff; color: #0f0f1e; border-radius: 20px; font-size: 0.8rem; font-weight: bold;">$39</div>
+            </div>
+            <h3>ArtFolio</h3>
+            <p>Creative portfolio template perfect for artists, photographers, and designers.</p>
+            <div style="display: flex; justify-content: space-between; margin-top: 1rem;">
+                <span style="color: #00d4ff;"><i class="fas fa-tag"></i> Portfolio</span>
+                <span style="color: #a0a0b0;"><i class="fas fa-download"></i> 89 sales</span>
+            </div>
+        </div>
+        
+        <div class="template-card">
+            <div class="template-preview" style="background: linear-gradient(45deg, #16a085, #1abc9c); height: 200px; border-radius: 10px; margin-bottom: 1.5rem; position: relative; overflow: hidden;">
+                <div style="position: absolute; top: 20px; left: 20px; width: 90%; height: 40px; background: rgba(255,255,255,0.1); border-radius: 5px;"></div>
+                <div style="position: absolute; top: 80px; left: 20px; width: 45%; height: 80px; background: rgba(255,255,255,0.05); border-radius: 5px;"></div>
+                <div style="position: absolute; top: 80px; right: 20px; width: 45%; height: 80px; background: rgba(255,255,255,0.05); border-radius: 5px;"></div>
+                <div style="position: absolute; bottom: 20px; right: 20px; padding: 8px 15px; background: #00d4ff; color: #0f0f1e; border-radius: 20px; font-size: 0.8rem; font-weight: bold;">$59</div>
+            </div>
+            <h3>ShopMax</h3>
+            <p>E-commerce template with product grid, filters, and shopping cart functionality.</p>
+            <div style="display: flex; justify-content: space-between; margin-top: 1rem;">
+                <span style="color: #00d4ff;"><i class="fas fa-tag"></i> E-commerce</span>
+                <span style="color: #a0a0b0;"><i class="fas fa-download"></i> 203 sales</span>
+            </div>
+        </div>
+        
+        <div class="template-card">
+            <div class="template-preview" style="background: linear-gradient(45deg, #8e44ad, #9b59b6); height: 200px; border-radius: 10px; margin-bottom: 1.5rem; position: relative; overflow: hidden;">
+                <div style="position: absolute; top: 20px; left: 20px; width: 90%; height: 15px; background: rgba(255,255,255,0.1); border-radius: 5px;"></div>
+                <div style="position: absolute; top: 45px; left: 20px; width: 70%; height: 100px; background: rgba(255,255,255,0.05); border-radius: 5px;"></div>
+                <div style="position: absolute; top: 160px; left: 20px; width: 40%; height: 15px; background: rgba(255,255,255,0.1); border-radius: 5px;"></div>
+                <div style="position: absolute; bottom: 20px; right: 20px; padding: 8px 15px; background: #00d4ff; color: #0f0f1e; border-radius: 20px; font-size: 0.8rem; font-weight: bold;">$29</div>
+            </div>
+            <h3>BlogWave</h3>
+            <p>Content-focused blog template with clean typography and reading-friendly layout.</p>
+            <div style="display: flex; justify-content: space-between; margin-top: 1rem;">
+                <span style="color: #00d4ff;"><i class="fas fa-tag"></i> Blog</span>
+                <span style="color: #a0a0b0;"><i class="fas fa-download"></i> 167 sales</span>
             </div>
         </div>
     </section>
 
     <!-- Features Section -->
     <section class="features" id="features">
+        <h2 style="grid-column: 1 / -1; text-align: center; margin-bottom: 3rem; font-size: 2.5rem; background: linear-gradient(135deg, #ffffff, #00d4ff); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">Why Choose Our Templates</h2>
+        
         <div class="feature-card">
-            <div class="feature-icon">⚡</div>
-            <h3>Lightning Fast</h3>
-            <p>Optimized performance ensures your users experience blazing-fast load times and smooth interactions.</p>
+            <div class="feature-icon"><i class="fas fa-mobile-alt"></i></div>
+            <h3>Fully Responsive</h3>
+            <p>All templates are mobile-first and look great on any device, from phones to desktops.</p>
         </div>
         <div class="feature-card">
-            <div class="feature-icon">🎨</div>
-            <h3>Beautiful Design</h3>
-            <p>Modern aesthetics combined with intuitive interfaces create an experience users will love.</p>
+            <div class="feature-icon"><i class="fas fa-bolt"></i></div>
+            <h3>Fast Loading</h3>
+            <p>Optimized code and assets ensure your website loads quickly for better user experience.</p>
         </div>
         <div class="feature-card">
-            <div class="feature-icon">🔒</div>
-            <h3>Secure & Reliable</h3>
-            <p>Enterprise-grade security and 99.9% uptime guarantee peace of mind for your business.</p>
+            <div class="feature-icon"><i class="fas fa-code"></i></div>
+            <h3>Clean Code</h3>
+            <p>Well-structured, commented code makes customization easy even for beginners.</p>
+        </div>
+        <div class="feature-card">
+            <div class="feature-icon"><i class="fas fa-life-ring"></i></div>
+            <h3>Free Support</h3>
+            <p>Get help with setup and customization from our dedicated support team.</p>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="features" style="background: rgba(10, 10, 20, 0.7); padding: 6rem 5%;">
+        <h2 style="grid-column: 1 / -1; text-align: center; margin-bottom: 3rem; font-size: 2.5rem; background: linear-gradient(135deg, #ffffff, #00d4ff); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">What Our Customers Say</h2>
+        
+        <div class="feature-card">
+            <div style="display: flex; align-items: center; margin-bottom: 1rem;">
+                <div style="width: 50px; height: 50px; border-radius: 50%; background: linear-gradient(135deg, #00d4ff, #0099ff); display: flex; align-items: center; justify-content: center; margin-right: 1rem;">
+                    <span style="color: #0f0f1e; font-weight: bold;">JD</span>
+                </div>
+                <div>
+                    <h3 style="margin: 0;">John Doe</h3>
+                    <p style="color: #a0a0b0; margin: 0;">Web Developer</p>
+                </div>
+            </div>
+            <p>"The business template I purchased saved me weeks of development time. The code is clean and well-documented."</p>
+            <div style="color: #ffc107; margin-top: 1rem;">
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+            </div>
+        </div>
+        
+        <div class="feature-card">
+            <div style="display: flex; align-items: center; margin-bottom: 1rem;">
+                <div style="width: 50px; height: 50px; border-radius: 50%; background: linear-gradient(135deg, #ff6584, #ff3366); display: flex; align-items: center; justify-content: center; margin-right: 1rem;">
+                    <span style="color: white; font-weight: bold;">SJ</span>
+                </div>
+                <div>
+                    <h3 style="margin: 0;">Sarah Johnson</h3>
+                    <p style="color: #a0a0b0; margin: 0;">Photographer</p>
+                </div>
+            </div>
+            <p>"The portfolio template perfectly showcases my work. Clients love the clean design and smooth animations."</p>
+            <div style="color: #ffc107; margin-top: 1rem;">
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star-half-alt"></i>
+            </div>
+        </div>
+        
+        <div class="feature-card">
+            <div style="display: flex; align-items: center; margin-bottom: 1rem;">
+                <div style="width: 50px; height: 50px; border-radius: 50%; background: linear-gradient(135deg, #2ecc71, #27ae60); display: flex; align-items: center; justify-content: center; margin-right: 1rem;">
+                    <span style="color: white; font-weight: bold;">MR</span>
+                </div>
+                <div>
+                    <h3 style="margin: 0;">Mike Roberts</h3>
+                    <p style="color: #a0a0b0; margin: 0;">Small Business Owner</p>
+                </div>
+            </div>
+            <p>"I launched my online store in just 2 days with the e-commerce template. The support team was incredibly helpful."</p>
+            <div style="color: #ffc107; margin-top: 1rem;">
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+            </div>
         </div>
     </section>
 
     <!-- Footer -->
     <footer id="contact">
-        <p>&copy; 2025 Your Brand. All rights reserved.</p>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; max-width: 1200px; margin: 0 auto 2rem;">
+            <div>
+                <h3 style="margin-bottom: 1rem; color: #00d4ff;">TemplateHub</h3>
+                <p style="color: #a0a0b0;">Premium website templates to launch your next project faster.</p>
+            </div>
+            <div>
+                <h3 style="margin-bottom: 1rem; color: #00d4ff;">Quick Links</h3>
+                <ul style="list-style: none;">
+                    <li><a href="#templates" style="color: #a0a0b0; text-decoration: none; transition: color 0.3s;">Templates</a></li>
+                    <li><a href="#categories" style="color: #a0a0b0; text-decoration: none; transition: color 0.3s;">Categories</a></li>
+                    <li><a href="#features" style="color: #a0a0b0; text-decoration: none; transition: color 0.3s;">Features</a></li>
+                    <li><a href="#contact" style="color: #a0a0b0; text-decoration: none; transition: color 0.3s;">Contact</a></li>
+                </ul>
+            </div>
+            <div>
+                <h3 style="margin-bottom: 1rem; color: #00d4ff;">Contact Us</h3>
+                <p style="color: #a0a0b0;"><i class="fas fa-envelope" style="margin-right: 0.5rem;"></i> support@templatehub.com</p>
+                <p style="color: #a0a0b0;"><i class="fas fa-phone" style="margin-right: 0.5rem;"></i> +1 (555) 123-4567</p>
+            </div>
+        </div>
+        
+        <p>&copy; 2023 TemplateHub. All rights reserved.</p>
         <div class="social-links">
-            <a href="#">Twitter</a>
-            <a href="#">LinkedIn</a>
-            <a href="#">GitHub</a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-facebook"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-github"></i></a>
         </div>
     </footer>
+
+    <script>
+        // Simple template filtering functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            // Add click handlers for category filtering (would be expanded in a real implementation)
+            const categoryCards = document.querySelectorAll('.feature-card');
+            categoryCards.forEach(card => {
+                card.addEventListener('click', function() {
+                    const category = this.querySelector('h3').textContent;
+                    alert(`Showing templates in category: ${category}`);
+                });
+            });
+            
+            // Add to cart functionality
+            const templateCards = document.querySelectorAll('.template-card');
+            templateCards.forEach(card => {
+                const priceElement = card.querySelector('.template-preview div:last-child');
+                card.addEventListener('click', function() {
+                    const templateName = this.querySelector('h3').textContent;
+                    const price = priceElement.textContent;
+                    alert(`Added "${templateName}" to cart - ${price}`);
+                });
+            });
+        });
+    </script>
 </body>
 </html>
