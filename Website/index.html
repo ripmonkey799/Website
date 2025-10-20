@@ -6,6 +6,68 @@
     <title>TemplateHub - Premium Website Templates</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Additional styles for clickable template cards */
+        .template-card {
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            padding-bottom: 3rem; /* Increased padding to make more space for the View Details text */
+        }
+        
+        .template-card:hover {
+            transform: translateY(-8px);
+            border-color: rgba(0, 212, 255, 0.6);
+            box-shadow: 0 20px 40px rgba(0, 212, 255, 0.15);
+        }
+        
+        .template-card::after {
+            content: 'View Details →';
+            position: absolute;
+            bottom: 10px; /* Moved lower */
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(0, 212, 255, 0.9);
+            color: #0f0f1e;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            z-index: 2;
+        }
+        
+        .template-card:hover::after {
+            opacity: 1;
+        }
+        
+        .template-link {
+            text-decoration: none;
+            color: inherit;
+            display: block;
+        }
+        
+        .template-category {
+            display: flex;
+            justify-content: center;
+            margin-top: 1rem;
+            margin-bottom: 1rem; /* Increased margin to separate more from View Details */
+        }
+        
+        .template-category span {
+            color: #00d4ff;
+        }
+        
+        /* Ensure template previews have proper spacing */
+        .template-preview {
+            margin-bottom: 1.5rem;
+            position: relative;
+            overflow: hidden;
+            border-radius: 10px;
+            height: 200px;
+        }
+    </style>
 </head>
 <body>
     <!-- Navigation -->
@@ -20,16 +82,16 @@
     </nav>
 
     <!-- Hero Section -->
-    <section class="hero">
-        <div class="hero-content">
-            <h1>Premium Website Templates</h1>
-            <p>Launch your next project faster with our professionally designed, responsive website templates. Perfect for businesses, portfolios, and more.</p>
-            <div class="cta-buttons">
-                <button class="btn btn-primary">Browse Templates</button>
-                <button class="btn btn-secondary">View Pricing</button>
-            </div>
+<section class="hero">
+    <div class="hero-content">
+        <h1>Premium Website Templates</h1>
+        <p>Launch your next project faster with our professionally designed, responsive website templates. Perfect for businesses, portfolios, and more.</p>
+        <div class="cta-buttons">
+            <a href="browse-templates/browse.html" class="btn btn-primary">Browse Templates</a>
+            <a href="pricing.html" class="btn btn-secondary">View Pricing</a>
         </div>
-    </section>
+    </div>
+</section>
 
     <!-- Categories Section -->
     <section class="features" id="categories">
@@ -55,71 +117,85 @@
             <h3>Blog</h3>
             <p>Content-focused templates perfect for bloggers, writers, and news websites.</p>
         </div>
+        <div class="feature-card">
+            <div class="feature-icon"><i class="fas fa-utensils"></i></div>
+            <h3>Restaurant</h3>
+            <p>Beautiful templates for restaurants, cafes, and food-related businesses with menu displays.</p>
+        </div>
+        <div class="feature-card">
+            <div class="feature-icon"><i class="fas fa-graduation-cap"></i></div>
+            <h3>Education</h3>
+            <p>Templates for schools, courses, online learning platforms, and educational institutions.</p>
+        </div>
     </section>
 
     <!-- Templates Showcase -->
     <section class="features" id="templates" style="background: rgba(10, 10, 20, 0.7); padding: 6rem 5%;">
         <h2 style="grid-column: 1 / -1; text-align: center; margin-bottom: 3rem; font-size: 2.5rem; background: linear-gradient(135deg, #ffffff, #00d4ff); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">Featured Templates</h2>
         
-        <div class="template-card">
-            <div class="template-preview" style="background: linear-gradient(45deg, #1a1a2e, #16213e); height: 200px; border-radius: 10px; margin-bottom: 1.5rem; position: relative; overflow: hidden;">
-                <div style="position: absolute; top: 20px; left: 20px; width: 80%; height: 20px; background: rgba(255,255,255,0.1); border-radius: 5px;"></div>
-                <div style="position: absolute; top: 50px; left: 20px; width: 60%; height: 15px; background: rgba(255,255,255,0.1); border-radius: 5px;"></div>
-                <div style="position: absolute; top: 80px; left: 20px; width: 90%; height: 80px; background: rgba(255,255,255,0.05); border-radius: 5px;"></div>
-                <div style="position: absolute; bottom: 20px; right: 20px; padding: 8px 15px; background: #00d4ff; color: #0f0f1e; border-radius: 20px; font-size: 0.8rem; font-weight: bold;">$49</div>
+        <a href="/templates/template-nexus.html" class="template-link">
+            <div class="template-card">
+                <div class="template-preview" style="background: linear-gradient(45deg, #1a1a2e, #16213e);">
+                    <div style="position: absolute; top: 20px; left: 20px; width: 80%; height: 20px; background: rgba(255,255,255,0.1); border-radius: 5px;"></div>
+                    <div style="position: absolute; top: 50px; left: 20px; width: 60%; height: 15px; background: rgba(255,255,255,0.1); border-radius: 5px;"></div>
+                    <div style="position: absolute; top: 80px; left: 20px; width: 90%; height: 80px; background: rgba(255,255,255,0.05); border-radius: 5px;"></div>
+                    <div style="position: absolute; bottom: 20px; right: 20px; padding: 8px 15px; background: #00d4ff; color: #0f0f1e; border-radius: 20px; font-size: 0.8rem; font-weight: bold;">$49</div>
+                </div>
+                <h3>Nexus Business</h3>
+                <p>Modern corporate template with clean design and professional layout.</p>
+                <div class="template-category">
+                    <span><i class="fas fa-tag"></i> Business</span>
+                </div>
             </div>
-            <h3>Nexus Business</h3>
-            <p>Modern corporate template with clean design and professional layout.</p>
-            <div style="display: flex; justify-content: space-between; margin-top: 1rem;">
-                <span style="color: #00d4ff;"><i class="fas fa-tag"></i> Business</span>
-                <span style="color: #a0a0b0;"><i class="fas fa-download"></i> 124 sales</span>
-            </div>
-        </div>
+        </a>
         
-        <div class="template-card">
-            <div class="template-preview" style="background: linear-gradient(45deg, #2c3e50, #34495e); height: 200px; border-radius: 10px; margin-bottom: 1.5rem; position: relative; overflow: hidden;">
-                <div style="position: absolute; top: 20px; left: 20px; width: 40%; height: 120px; background: rgba(255,255,255,0.05); border-radius: 5px;"></div>
-                <div style="position: absolute; top: 20px; right: 20px; width: 50%; height: 15px; background: rgba(255,255,255,0.1); border-radius: 5px;"></div>
-                <div style="position: absolute; top: 45px; right: 20px; width: 50%; height: 15px; background: rgba(255,255,255,0.1); border-radius: 5px;"></div>
-                <div style="position: absolute; bottom: 20px; right: 20px; padding: 8px 15px; background: #00d4ff; color: #0f0f1e; border-radius: 20px; font-size: 0.8rem; font-weight: bold;">$39</div>
+        <a href="template-artfolio.html" class="template-link">
+            <div class="template-card">
+                <div class="template-preview" style="background: linear-gradient(45deg, #2c3e50, #34495e);">
+                    <div style="position: absolute; top: 20px; left: 20px; width: 40%; height: 120px; background: rgba(255,255,255,0.05); border-radius: 5px;"></div>
+                    <div style="position: absolute; top: 20px; right: 20px; width: 50%; height: 15px; background: rgba(255,255,255,0.1); border-radius: 5px;"></div>
+                    <div style="position: absolute; top: 45px; right: 20px; width: 50%; height: 15px; background: rgba(255,255,255,0.1); border-radius: 5px;"></div>
+                    <div style="position: absolute; bottom: 20px; right: 20px; padding: 8px 15px; background: #00d4ff; color: #0f0f1e; border-radius: 20px; font-size: 0.8rem; font-weight: bold;">$39</div>
+                </div>
+                <h3>ArtFolio</h3>
+                <p>Creative portfolio template perfect for artists, photographers, and designers.</p>
+                <div class="template-category">
+                    <span><i class="fas fa-tag"></i> Portfolio</span>
+                </div>
             </div>
-            <h3>ArtFolio</h3>
-            <p>Creative portfolio template perfect for artists, photographers, and designers.</p>
-            <div style="display: flex; justify-content: space-between; margin-top: 1rem;">
-                <span style="color: #00d4ff;"><i class="fas fa-tag"></i> Portfolio</span>
-                <span style="color: #a0a0b0;"><i class="fas fa-download"></i> 89 sales</span>
-            </div>
-        </div>
+        </a>
         
-        <div class="template-card">
-            <div class="template-preview" style="background: linear-gradient(45deg, #16a085, #1abc9c); height: 200px; border-radius: 10px; margin-bottom: 1.5rem; position: relative; overflow: hidden;">
-                <div style="position: absolute; top: 20px; left: 20px; width: 90%; height: 40px; background: rgba(255,255,255,0.1); border-radius: 5px;"></div>
-                <div style="position: absolute; top: 80px; left: 20px; width: 45%; height: 80px; background: rgba(255,255,255,0.05); border-radius: 5px;"></div>
-                <div style="position: absolute; top: 80px; right: 20px; width: 45%; height: 80px; background: rgba(255,255,255,0.05); border-radius: 5px;"></div>
-                <div style="position: absolute; bottom: 20px; right: 20px; padding: 8px 15px; background: #00d4ff; color: #0f0f1e; border-radius: 20px; font-size: 0.8rem; font-weight: bold;">$59</div>
+        <a href="template-shopmax.html" class="template-link">
+            <div class="template-card">
+                <div class="template-preview" style="background: linear-gradient(45deg, #16a085, #1abc9c);">
+                    <div style="position: absolute; top: 20px; left: 20px; width: 90%; height: 40px; background: rgba(255,255,255,0.1); border-radius: 5px;"></div>
+                    <div style="position: absolute; top: 80px; left: 20px; width: 45%; height: 80px; background: rgba(255,255,255,0.05); border-radius: 5px;"></div>
+                    <div style="position: absolute; top: 80px; right: 20px; width: 45%; height: 80px; background: rgba(255,255,255,0.05); border-radius: 5px;"></div>
+                    <div style="position: absolute; bottom: 20px; right: 20px; padding: 8px 15px; background: #00d4ff; color: #0f0f1e; border-radius: 20px; font-size: 0.8rem; font-weight: bold;">$59</div>
+                </div>
+                <h3>ShopMax</h3>
+                <p>E-commerce template with product grid, filters, and shopping cart functionality.</p>
+                <div class="template-category">
+                    <span><i class="fas fa-tag"></i> E-commerce</span>
+                </div>
             </div>
-            <h3>ShopMax</h3>
-            <p>E-commerce template with product grid, filters, and shopping cart functionality.</p>
-            <div style="display: flex; justify-content: space-between; margin-top: 1rem;">
-                <span style="color: #00d4ff;"><i class="fas fa-tag"></i> E-commerce</span>
-                <span style="color: #a0a0b0;"><i class="fas fa-download"></i> 203 sales</span>
-            </div>
-        </div>
+        </a>
         
-        <div class="template-card">
-            <div class="template-preview" style="background: linear-gradient(45deg, #8e44ad, #9b59b6); height: 200px; border-radius: 10px; margin-bottom: 1.5rem; position: relative; overflow: hidden;">
-                <div style="position: absolute; top: 20px; left: 20px; width: 90%; height: 15px; background: rgba(255,255,255,0.1); border-radius: 5px;"></div>
-                <div style="position: absolute; top: 45px; left: 20px; width: 70%; height: 100px; background: rgba(255,255,255,0.05); border-radius: 5px;"></div>
-                <div style="position: absolute; top: 160px; left: 20px; width: 40%; height: 15px; background: rgba(255,255,255,0.1); border-radius: 5px;"></div>
-                <div style="position: absolute; bottom: 20px; right: 20px; padding: 8px 15px; background: #00d4ff; color: #0f0f1e; border-radius: 20px; font-size: 0.8rem; font-weight: bold;">$29</div>
+        <a href="template-blogwave.html" class="template-link">
+            <div class="template-card">
+                <div class="template-preview" style="background: linear-gradient(45deg, #8e44ad, #9b59b6);">
+                    <div style="position: absolute; top: 20px; left: 20px; width: 90%; height: 15px; background: rgba(255,255,255,0.1); border-radius: 5px;"></div>
+                    <div style="position: absolute; top: 45px; left: 20px; width: 70%; height: 100px; background: rgba(255,255,255,0.05); border-radius: 5px;"></div>
+                    <div style="position: absolute; top: 160px; left: 20px; width: 40%; height: 15px; background: rgba(255,255,255,0.1); border-radius: 5px;"></div>
+                    <div style="position: absolute; bottom: 20px; right: 20px; padding: 8px 15px; background: #00d4ff; color: #0f0f1e; border-radius: 20px; font-size: 0.8rem; font-weight: bold;">$29</div>
+                </div>
+                <h3>BlogWave</h3>
+                <p>Content-focused blog template with clean typography and reading-friendly layout.</p>
+                <div class="template-category">
+                    <span><i class="fas fa-tag"></i> Blog</span>
+                </div>
             </div>
-            <h3>BlogWave</h3>
-            <p>Content-focused blog template with clean typography and reading-friendly layout.</p>
-            <div style="display: flex; justify-content: space-between; margin-top: 1rem;">
-                <span style="color: #00d4ff;"><i class="fas fa-tag"></i> Blog</span>
-                <span style="color: #a0a0b0;"><i class="fas fa-download"></i> 167 sales</span>
-            </div>
-        </div>
+        </a>
     </section>
 
     <!-- Features Section -->
@@ -145,71 +221,6 @@
             <div class="feature-icon"><i class="fas fa-life-ring"></i></div>
             <h3>Free Support</h3>
             <p>Get help with setup and customization from our dedicated support team.</p>
-        </div>
-    </section>
-
-    <!-- Testimonials -->
-    <section class="features" style="background: rgba(10, 10, 20, 0.7); padding: 6rem 5%;">
-        <h2 style="grid-column: 1 / -1; text-align: center; margin-bottom: 3rem; font-size: 2.5rem; background: linear-gradient(135deg, #ffffff, #00d4ff); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">What Our Customers Say</h2>
-        
-        <div class="feature-card">
-            <div style="display: flex; align-items: center; margin-bottom: 1rem;">
-                <div style="width: 50px; height: 50px; border-radius: 50%; background: linear-gradient(135deg, #00d4ff, #0099ff); display: flex; align-items: center; justify-content: center; margin-right: 1rem;">
-                    <span style="color: #0f0f1e; font-weight: bold;">JD</span>
-                </div>
-                <div>
-                    <h3 style="margin: 0;">John Doe</h3>
-                    <p style="color: #a0a0b0; margin: 0;">Web Developer</p>
-                </div>
-            </div>
-            <p>"The business template I purchased saved me weeks of development time. The code is clean and well-documented."</p>
-            <div style="color: #ffc107; margin-top: 1rem;">
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-            </div>
-        </div>
-        
-        <div class="feature-card">
-            <div style="display: flex; align-items: center; margin-bottom: 1rem;">
-                <div style="width: 50px; height: 50px; border-radius: 50%; background: linear-gradient(135deg, #ff6584, #ff3366); display: flex; align-items: center; justify-content: center; margin-right: 1rem;">
-                    <span style="color: white; font-weight: bold;">SJ</span>
-                </div>
-                <div>
-                    <h3 style="margin: 0;">Sarah Johnson</h3>
-                    <p style="color: #a0a0b0; margin: 0;">Photographer</p>
-                </div>
-            </div>
-            <p>"The portfolio template perfectly showcases my work. Clients love the clean design and smooth animations."</p>
-            <div style="color: #ffc107; margin-top: 1rem;">
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star-half-alt"></i>
-            </div>
-        </div>
-        
-        <div class="feature-card">
-            <div style="display: flex; align-items: center; margin-bottom: 1rem;">
-                <div style="width: 50px; height: 50px; border-radius: 50%; background: linear-gradient(135deg, #2ecc71, #27ae60); display: flex; align-items: center; justify-content: center; margin-right: 1rem;">
-                    <span style="color: white; font-weight: bold;">MR</span>
-                </div>
-                <div>
-                    <h3 style="margin: 0;">Mike Roberts</h3>
-                    <p style="color: #a0a0b0; margin: 0;">Small Business Owner</p>
-                </div>
-            </div>
-            <p>"I launched my online store in just 2 days with the e-commerce template. The support team was incredibly helpful."</p>
-            <div style="color: #ffc107; margin-top: 1rem;">
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-            </div>
         </div>
     </section>
 
@@ -257,14 +268,12 @@
                 });
             });
             
-            // Add to cart functionality
+            // Remove the old click handler since templates are now wrapped in links
             const templateCards = document.querySelectorAll('.template-card');
             templateCards.forEach(card => {
-                const priceElement = card.querySelector('.template-preview div:last-child');
-                card.addEventListener('click', function() {
-                    const templateName = this.querySelector('h3').textContent;
-                    const price = priceElement.textContent;
-                    alert(`Added "${templateName}" to cart - ${price}`);
+                card.addEventListener('click', function(e) {
+                    // Let the link handle the navigation
+                    e.preventDefault();
                 });
             });
         });

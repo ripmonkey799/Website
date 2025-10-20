@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pricing - TemplateHub</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .pricing-header {
+            margin-top: 80px;
+            padding: 4rem 5%;
+            text-align: center;
+            background: rgba(10, 10, 20, 0.7);
+        }
+        
+        .pricing-plans {
+            padding: 4rem 5%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .plans-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        
+        .pricing-plan {
+            background: linear-gradient(135deg, rgba(0, 212, 255, 0.05), rgba(0, 153, 255, 0.05));
+            padding: 3rem 2rem;
+            border-radius: 15px;
+            border: 1px solid rgba(0, 212, 255, 0.2);
+            text-align: center;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        
+        .pricing-plan.featured {
+            border-color: #00d4ff;
+            transform: scale(1.05);
+            box-shadow: 0 20px 40px rgba(0, 212, 255, 0.2);
+        }
+        
+        .pricing-plan.featured::before {
+            content: 'Most Popular';
+            position: absolute;
+            top: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #00d4ff;
+            color: #0f0f1e;
+            padding: 5px 20px;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+        
+        .pricing-plan:hover {
+            transform: translateY(-10px);
+            border-color: rgba(0, 212, 255, 0.6);
+            box-shadow: 0 25px 50px rgba(0, 212, 255, 0.15);
+        }
+        
+        .pricing-plan.featured:hover {
+            transform: scale(1.05) translateY(-10px);
+        }
+        
+        .plan-icon {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+            color: #00d4ff;
+        }
+        
+        .plan-name {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: #ffffff;
+        }
+        
+        .plan-price {
+            font-size: 3rem;
+            font-weight: bold;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(135deg, #ffffff, #00d4ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .plan-price span {
+            font-size: 1rem;
+            color: #a0a0b0;
+        }
+        
+        .plan-features {
+            list-style: none;
+            margin: 2rem 0;
+            text-align: left;
+        }
+        
+        .plan-features li {
+            padding: 0.5rem 0;
+            color: #a0a0b0;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .plan-features li i {
+            color: #00d4ff;
+        }
+        
+        .faq-section {
+            padding: 4rem 5%;
+            max-width: 1000px;
+            margin: 0 auto;
+            background: rgba(10, 10, 20, 0.7);
+        }
+        
+        .faq-grid {
+            display: grid;
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+        
+        .faq-item {
+            background: linear-gradient(135deg, rgba(0, 212, 255, 0.05), rgba(0, 153, 255, 0.05));
+            padding: 2rem;
+            border-radius: 10px;
+            border: 1px solid rgba(0, 212, 255, 0.2);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .faq-item:hover {
+            border-color: rgba(0, 212, 255, 0.6);
+        }
+        
+        .faq-question {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 600;
+            color: #ffffff;
+        }
+        
+        .faq-answer {
+            margin-top: 1rem;
+            color: #a0a0b0;
+            line-height: 1.6;
+            display: none;
+        }
+        
+        .faq-item.active .faq-answer {
+            display: block;
+        }
+        
+        .faq-item.active .faq-question i {
+            transform: rotate(180deg);
+        }
+        
+        .faq-question i {
+            transition: transform 0.3s ease;
+            color: #00d4ff;
+        }
+        
+        .guarantee-section {
+            padding: 4rem 5%;
+            text-align: center;
+            background: rgba(0, 212, 255, 0.05);
+            margin: 2rem 0;
+        }
+        
+        .guarantee-content {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .guarantee-icon {
+            font-size: 4rem;
+            color: #00d4ff;
+            margin-bottom: 1.5rem;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="logo"><a href="index.html" style="text-decoration: none; color: inherit;">TemplateHub</a></div>
+        <ul>
+            <li><a href="index.html#templates">Templates</a></li>
+            <li><a href="index.html#categories">Categories</a></li>
+            <li><a href="index.html#features">Features</a></li>
+            <li><a href="pricing.html">Pricing</a></li>
+            <li><a href="index.html#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- Pricing Header -->
+    <section class="pricing-header">
+        <h1 style="font-size: 3rem; margin-bottom: 1rem; background: linear-gradient(135deg, #ffffff, #00d4ff); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">
+            Simple, Transparent Pricing
+        </h1>
+        <p style="font-size: 1.2rem; color: #a0a0b0; max-width: 600px; margin: 0 auto 2rem;">
+            Choose the perfect plan for your needs. All plans include lifetime updates and support.
+        </p>
+    </section>
+
+    <!-- Pricing Plans -->
+    <section class="pricing-plans">
+        <div class="plans-container">
+            <!-- Single Template Plan -->
+            <div class="pricing-plan">
+                <div class="plan-icon">
+                    <i class="fas fa-file-alt"></i>
+                </div>
+                <h3 class="plan-name">Single Template</h3>
+                <div class="plan-price">$29<span>/one-time</span></div>
+                <p style="color: #a0a0b0; margin-bottom: 2rem;">Perfect for individual projects</p>
+                <ul class="plan-features">
+                    <li><i class="fas fa-check"></i> 1 Premium Template</li>
+                    <li><i class="fas fa-check"></i> Lifetime Updates</li>
+                    <li><i class="fas fa-check"></i> 6 Months Support</li>
+                    <li><i class="fas fa-check"></i> Free Documentation</li>
+                    <li><i class="fas fa-check"></i> Responsive Design</li>
+                    <li><i class="fas fa-times" style="color: #707080;"></i> Source Files</li>
+                    <li><i class="fas fa-times" style="color: #707080;"></i> Customization Help</li>
+                </ul>
+                <button class="btn btn-primary" style="width: 100%;">Get Started</button>
+            </div>
+
+            <!-- Multiple Templates Plan -->
+            <div class="pricing-plan featured">
+                <div class="plan-icon">
+                    <i class="fas fa-folder-open"></i>
+                </div>
+                <h3 class="plan-name">Template Bundle</h3>
+                <div class="plan-price">$99<span>/one-time</span></div>
+                <p style="color: #a0a0b0; margin-bottom: 2rem;">Best value for multiple projects</p>
+                <ul class="plan-features">
+                    <li><i class="fas fa-check"></i> 5 Premium Templates</li>
+                    <li><i class="fas fa-check"></i> Lifetime Updates</li>
+                    <li><i class="fas fa-check"></i> 1 Year Support</li>
+                    <li><i class="fas fa-check"></i> Free Documentation</li>
+                    <li><i class="fas fa-check"></i> Responsive Design</li>
+                    <li><i class="fas fa-check"></i> Source Files Included</li>
+                    <li><i class="fas fa-check"></i> Basic Customization Help</li>
+                </ul>
+                <button class="btn btn-primary" style="width: 100%;">Get Started</button>
+            </div>
+
+            <!-- All Access Plan -->
+            <div class="pricing-plan">
+                <div class="plan-icon">
+                    <i class="fas fa-infinity"></i>
+                </div>
+                <h3 class="plan-name">All Access</h3>
+                <div class="plan-price">$199<span>/one-time</span></div>
+                <p style="color: #a0a0b0; margin-bottom: 2rem;">Unlimited access for agencies</p>
+                <ul class="plan-features">
+                    <li><i class="fas fa-check"></i> All Current & Future Templates</li>
+                    <li><i class="fas fa-check"></i> Lifetime Updates</li>
+                    <li><i class="fas fa-check"></i> Lifetime Support</li>
+                    <li><i class="fas fa-check"></i> Free Documentation</li>
+                    <li><i class="fas fa-check"></i> Responsive Design</li>
+                    <li><i class="fas fa-check"></i> Source Files Included</li>
+                    <li><i class="fas fa-check"></i> Priority Customization Help</li>
+                </ul>
+                <button class="btn btn-primary" style="width: 100%;">Get Started</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Money Back Guarantee -->
+    <section class="guarantee-section">
+        <div class="guarantee-content">
+            <div class="guarantee-icon">
+                <i class="fas fa-shield-alt"></i>
+            </div>
+            <h2 style="margin-bottom: 1rem; color: #ffffff;">30-Day Money Back Guarantee</h2>
+            <p style="color: #a0a0b0; font-size: 1.1rem;">
+                We're confident you'll love our templates. If you're not satisfied within 30 days, 
+                we'll refund your purchase. No questions asked.
+            </p>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq-section">
+        <h2 style="text-align: center; margin-bottom: 2rem; font-size: 2.5rem; background: linear-gradient(135deg, #ffffff, #00d4ff); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">
+            Frequently Asked Questions
+        </h2>
+        
+        <div class="faq-grid">
+            <div class="faq-item">
+                <div class="faq-question">
+                    What's included in the purchase?
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    You'll receive the complete template files including HTML, CSS, JavaScript, images, and documentation. All templates are fully responsive and come with lifetime updates.
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question">
+                    Can I use the templates for client projects?
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    Yes! All our templates come with a commercial license that allows you to use them for unlimited client projects. You can modify and customize them as needed.
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question">
+                    Do you offer customization services?
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    Yes, we offer customization services starting at $50/hour. Bundle and All Access plan customers receive priority support and discounted customization rates.
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question">
+                    What payment methods do you accept?
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    We accept all major credit cards (Visa, MasterCard, American Express), PayPal, and bank transfers for larger orders.
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question">
+                    How do updates work?
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    When you purchase a template, you get lifetime updates for that version. We'll notify you when updates are available, and you can download them from your account dashboard.
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question">
+                    Can I get a refund?
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    Yes, we offer a 30-day money-back guarantee. If you're not satisfied with your purchase for any reason, contact us within 30 days for a full refund.
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contact">
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; max-width: 1200px; margin: 0 auto 2rem;">
+            <div>
+                <h3 style="margin-bottom: 1rem; color: #00d4ff;">TemplateHub</h3>
+                <p style="color: #a0a0b0;">Premium website templates to launch your next project faster.</p>
+            </div>
+            <div>
+                <h3 style="margin-bottom: 1rem; color: #00d4ff;">Quick Links</h3>
+                <ul style="list-style: none;">
+                    <li><a href="index.html#templates" style="color: #a0a0b0; text-decoration: none; transition: color 0.3s;">Templates</a></li>
+                    <li><a href="index.html#categories" style="color: #a0a0b0; text-decoration: none; transition: color 0.3s;">Categories</a></li>
+                    <li><a href="index.html#features" style="color: #a0a0b0; text-decoration: none; transition: color 0.3s;">Features</a></li>
+                    <li><a href="pricing.html" style="color: #a0a0b0; text-decoration: none; transition: color 0.3s;">Pricing</a></li>
+                </ul>
+            </div>
+            <div>
+                <h3 style="margin-bottom: 1rem; color: #00d4ff;">Contact Us</h3>
+                <p style="color: #a0a0b0;"><i class="fas fa-envelope" style="margin-right: 0.5rem;"></i> support@templatehub.com</p>
+                <p style="color: #a0a0b0;"><i class="fas fa-phone" style="margin-right: 0.5rem;"></i> +1 (555) 123-4567</p>
+            </div>
+        </div>
+        
+        <p>&copy; 2023 TemplateHub. All rights reserved.</p>
+        <div class="social-links">
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-facebook"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-github"></i></a>
+        </div>
+    </footer>
+
+    <script>
+        // FAQ functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const faqItems = document.querySelectorAll('.faq-item');
+            
+            faqItems.forEach(item => {
+                item.addEventListener('click', function() {
+                    // Close all other FAQ items
+                    faqItems.forEach(otherItem => {
+                        if (otherItem !== item) {
+                            otherItem.classList.remove('active');
+                        }
+                    });
+                    
+                    // Toggle current item
+                    this.classList.toggle('active');
+                });
+            });
+        });
+    </script>
+</body>
+</html>
