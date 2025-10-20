@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Browse Templates - TemplateHub</title>
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .browse-header {
+            margin-top: 80px;
+            padding: 3rem 5%;
+            text-align: center;
+            background: rgba(10, 10, 20, 0.7);
+        }
+        
+        .search-section {
+            max-width: 600px;
+            margin: 0 auto 3rem;
+        }
+        
+        .search-box {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+        
+        .search-box input {
+            flex: 1;
+            padding: 1rem;
+            border: 1px solid rgba(0, 212, 255, 0.3);
+            border-radius: 50px;
+            background: rgba(255, 255, 255, 0.05);
+            color: #e0e0e0;
+            font-size: 1rem;
+        }
+        
+        .search-box input:focus {
+            outline: none;
+            border-color: #00d4ff;
+        }
+        
+        .category-filters {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            justify-content: center;
+            margin-bottom: 2rem;
+        }
+        
+        .category-filter {
+            padding: 0.5rem 1.5rem;
+            border: 1px solid rgba(0, 212, 255, 0.3);
+            border-radius: 25px;
+            background: transparent;
+            color: #a0a0b0;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .category-filter:hover, .category-filter.active {
+            background: #00d4ff;
+            color: #0f0f1e;
+            border-color: #00d4ff;
+        }
+        
+        .templates-grid {
+            padding: 2rem 5%;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        
+        .template-item {
+            background: linear-gradient(135deg, rgba(0, 212, 255, 0.05), rgba(0, 153, 255, 0.05));
+            padding: 2rem;
+            border-radius: 15px;
+            border: 1px solid rgba(0, 212, 255, 0.2);
+            transition: all 0.3s ease;
+            cursor: pointer;
+            text-decoration: none;
+            color: inherit;
+            display: block;
+        }
+        
+        .template-item:hover {
+            transform: translateY(-5px);
+            border-color: rgba(0, 212, 255, 0.6);
+            box-shadow: 0 15px 30px rgba(0, 212, 255, 0.15);
+        }
+        
+        .template-preview-small {
+            height: 180px;
+            border-radius: 10px;
+            margin-bottom: 1.5rem;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .template-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 1rem;
+        }
+        
+        .template-price {
+            background: #00d4ff;
+            color: #0f0f1e;
+            padding: 4px 12px;
+            border-radius: 15px;
+            font-size: 0.9rem;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="logo"><a href="../index.html" style="text-decoration: none; color: inherit;">TemplateHub</a></div>
+        <ul>
+            <li><a href="../index.html#templates">Templates</a></li>
+            <li><a href="../index.html#categories">Categories</a></li>
+            <li><a href="../index.html#features">Features</a></li>
+            <li><a href="../index.html#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- Browse Header -->
+    <section class="browse-header">
+        <h1 style="font-size: 3rem; margin-bottom: 1rem; background: linear-gradient(135deg, #ffffff, #00d4ff); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">
+            Browse All Templates
+        </h1>
+        <p style="font-size: 1.2rem; color: #a0a0b0; max-width: 600px; margin: 0 auto 2rem;">
+            Discover our complete collection of premium website templates
+        </p>
+        
+        <div class="search-section">
+            <div class="search-box">
+                <input type="text" placeholder="Search templates..." id="searchInput">
+                <button class="btn btn-primary">Search</button>
+            </div>
+            
+            <div class="category-filters">
+                <button class="category-filter active" data-category="all">All</button>
+                <button class="category-filter" data-category="business">Business</button>
+                <button class="category-filter" data-category="ecommerce">E-commerce</button>
+                <button class="category-filter" data-category="portfolio">Portfolio</button>
+                <button class="category-filter" data-category="blog">Blog</button>
+                <button class="category-filter" data-category="restaurant">Restaurant</button>
+                <button class="category-filter" data-category="education">Education</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Templates Grid -->
+    <section class="templates-grid" id="templatesGrid">
+        <!-- Templates will be loaded here by JavaScript -->
+    </section>
+
+    <!-- Footer -->
+    <footer id="contact">
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; max-width: 1200px; margin: 0 auto 2rem;">
+            <div>
+                <h3 style="margin-bottom: 1rem; color: #00d4ff;">TemplateHub</h3>
+                <p style="color: #a0a0b0;">Premium website templates to launch your next project faster.</p>
+            </div>
+            <div>
+                <h3 style="margin-bottom: 1rem; color: #00d4ff;">Quick Links</h3>
+                <ul style="list-style: none;">
+                    <li><a href="../index.html#templates" style="color: #a0a0b0; text-decoration: none; transition: color 0.3s;">Templates</a></li>
+                    <li><a href="../index.html#categories" style="color: #a0a0b0; text-decoration: none; transition: color 0.3s;">Categories</a></li>
+                    <li><a href="../index.html#features" style="color: #a0a0b0; text-decoration: none; transition: color 0.3s;">Features</a></li>
+                    <li><a href="../index.html#contact" style="color: #a0a0b0; text-decoration: none; transition: color 0.3s;">Contact</a></li>
+                </ul>
+            </div>
+            <div>
+                <h3 style="margin-bottom: 1rem; color: #00d4ff;">Contact Us</h3>
+                <p style="color: #a0a0b0;"><i class="fas fa-envelope" style="margin-right: 0.5rem;"></i> support@templatehub.com</p>
+                <p style="color: #a0a0b0;"><i class="fas fa-phone" style="margin-right: 0.5rem;"></i> +1 (555) 123-4567</p>
+            </div>
+        </div>
+        
+        <p>&copy; 2023 TemplateHub. All rights reserved.</p>
+        <div class="social-links">
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-facebook"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-github"></i></a>
+        </div>
+    </footer>
+
+    <script>
+        // Template data
+        const templates = [
+            {
+                id: 1,
+                name: "Nexus Business",
+                category: "business",
+                price: "$49",
+                description: "Modern corporate template with clean design and professional layout.",
+                previewStyle: "background: linear-gradient(45deg, #1a1a2e, #16213e);",
+                link: "../templates/template-nexus.html"
+            },
+            {
+                id: 2,
+                name: "ArtFolio",
+                category: "portfolio",
+                price: "$39",
+                description: "Creative portfolio template perfect for artists and designers.",
+                previewStyle: "background: linear-gradient(45deg, #2c3e50, #34495e);",
+                link: "../templates/template-artfolio.html"
+            },
+            {
+                id: 3,
+                name: "ShopMax",
+                category: "ecommerce",
+                price: "$59",
+                description: "E-commerce template with product grid and shopping cart.",
+                previewStyle: "background: linear-gradient(45deg, #16a085, #1abc9c);",
+                link: "../templates/template-shopmax.html"
+            },
+            {
+                id: 4,
+                name: "BlogWave",
+                category: "blog",
+                price: "$29",
+                description: "Content-focused blog template with clean typography.",
+                previewStyle: "background: linear-gradient(45deg, #8e44ad, #9b59b6);",
+                link: "../templates/template-blogwave.html"
+            },
+            {
+                id: 5,
+                name: "Foodie Delight",
+                category: "restaurant",
+                price: "$45",
+                description: "Restaurant template with menu display and reservation system.",
+                previewStyle: "background: linear-gradient(45deg, #e74c3c, #c0392b);",
+                link: "../templates/template-foodie.html"
+            },
+            {
+                id: 6,
+                name: "EduLearn",
+                category: "education",
+                price: "$55",
+                description: "Education template for schools and online courses.",
+                previewStyle: "background: linear-gradient(45deg, #3498db, #2980b9);",
+                link: "../templates/template-edulearn.html"
+            },
+            {
+                id: 7,
+                name: "StartUp Pro",
+                category: "business",
+                price: "$42",
+                description: "Modern template for startups and tech companies.",
+                previewStyle: "background: linear-gradient(45deg, #9b59b6, #8e44ad);",
+                link: "../templates/template-startup.html"
+            },
+            {
+                id: 8,
+                name: "PhotoGallery",
+                category: "portfolio",
+                price: "$38",
+                description: "Portfolio template with image gallery and lightbox.",
+                previewStyle: "background: linear-gradient(45deg, #34495e, #2c3e50);",
+                link: "../templates/template-photogallery.html"
+            }
+        ];
+
+        // Function to render templates
+        function renderTemplates(filteredTemplates = templates) {
+            const grid = document.getElementById('templatesGrid');
+            grid.innerHTML = '';
+            
+            filteredTemplates.forEach(template => {
+                const templateElement = `
+                    <a href="${template.link}" class="template-item">
+                        <div class="template-preview-small" style="${template.previewStyle}">
+                            <div style="position: absolute; top: 15px; left: 15px; width: 70%; height: 15px; background: rgba(255,255,255,0.1); border-radius: 5px;"></div>
+                            <div style="position: absolute; top: 40px; left: 15px; width: 50%; height: 12px; background: rgba(255,255,255,0.1); border-radius: 5px;"></div>
+                            <div style="position: absolute; top: 65px; left: 15px; width: 80%; height: 80px; background: rgba(255,255,255,0.05); border-radius: 5px;"></div>
+                        </div>
+                        <h3>${template.name}</h3>
+                        <p style="color: #a0a0b0; margin: 0.5rem 0;">${template.description}</p>
+                        <div class="template-meta">
+                            <span style="color: #00d4ff;"><i class="fas fa-tag"></i> ${template.category.charAt(0).toUpperCase() + template.category.slice(1)}</span>
+                            <span class="template-price">${template.price}</span>
+                        </div>
+                    </a>
+                `;
+                grid.innerHTML += templateElement;
+            });
+        }
+
+        // Filter functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            renderTemplates();
+            
+            // Category filter
+            const filters = document.querySelectorAll('.category-filter');
+            filters.forEach(filter => {
+                filter.addEventListener('click', function() {
+                    filters.forEach(f => f.classList.remove('active'));
+                    this.classList.add('active');
+                    
+                    const category = this.dataset.category;
+                    if (category === 'all') {
+                        renderTemplates();
+                    } else {
+                        const filtered = templates.filter(t => t.category === category);
+                        renderTemplates(filtered);
+                    }
+                });
+            });
+            
+            // Search functionality
+            const searchInput = document.getElementById('searchInput');
+            searchInput.addEventListener('input', function() {
+                const searchTerm = this.value.toLowerCase();
+                const filtered = templates.filter(t => 
+                    t.name.toLowerCase().includes(searchTerm) || 
+                    t.description.toLowerCase().includes(searchTerm) ||
+                    t.category.toLowerCase().includes(searchTerm)
+                );
+                renderTemplates(filtered);
+            });
+        });
+    </script>
+</body>
+</html>
